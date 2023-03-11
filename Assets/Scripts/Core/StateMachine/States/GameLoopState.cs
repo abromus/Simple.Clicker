@@ -2,7 +2,17 @@
 {
     public class GameLoopState : IEnterState
     {
-        public void Enter() { }
+        private readonly Game _game;
+
+        public GameLoopState(Game game)
+        {
+            _game = game;
+        }
+
+        public void Enter()
+        {
+            _game.World.ScreenSystem.ShowGame();
+        }
 
         public void Exit() { }
     }

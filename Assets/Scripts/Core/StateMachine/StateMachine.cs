@@ -9,14 +9,14 @@ namespace Clicker.Core
 
         private IExitState _currentState;
 
-        public StateMachine(SceneLoader sceneLoader)
+        public StateMachine(Game game, SceneLoader sceneLoader)
         {
             _states = new Dictionary<Type, IState>()
             {
                 [typeof(BootstrapState)] = new BootstrapState(this),
-                [typeof(GameState)] = new GameState(this),
+                [typeof(GameState)] = new GameState(game),
                 [typeof(SceneLoaderState)] = new SceneLoaderState(sceneLoader),
-                [typeof(GameLoopState)] = new GameLoopState(),
+                [typeof(GameLoopState)] = new GameLoopState(game),
             };
         }
 
