@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Clicker.Game;
 using UnityEngine;
 
@@ -7,22 +8,27 @@ namespace Clicker.Core
     public class ScreenSystem : MonoBehaviour
     {
         private Transform _transform;
-        private ScreenConfig _screenConfig;
+        private GameManagement _game;
 
-        public void Init(Transform transform, ScreenConfig screenConfig)
+        public void Init(Transform transform, GameManagement game)
         {
             _transform = transform;
-            _screenConfig = screenConfig;
+            _game = game;
         }
 
         public void ShowGame()
         {
-            var screen = _screenConfig.Screens.FirstOrDefault(screen => screen.ScreenType == ScreenType.Game);
+            var screenPrefab = _game.ConfigData.ScreenConfig.Screens.FirstOrDefault(screen => screen.ScreenType == ScreenType.Game);
 
-            if (screen == null)
+            if (screenPrefab == null)
                 return;
 
-            Instantiate(screen, _transform);
+            var screen = Instantiate(screenPrefab, _transform);
+
+            var data = new Dictionary<string, object>();
+            data[GameScreen.GameKey] = _game;
+
+            screen.Show(data);
         }
     }
 }

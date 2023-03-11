@@ -7,5 +7,7 @@ namespace Clicker.Core
     public class BusinessConfig : ScriptableObject
     {
         [SerializeField] private List<BusinessData> _businessData;
+
+        public IReadOnlyList<BusinessData> BusinessData => _businessData;
     }
 }

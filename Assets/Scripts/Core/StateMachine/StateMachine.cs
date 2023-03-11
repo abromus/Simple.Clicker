@@ -9,7 +9,7 @@ namespace Clicker.Core
 
         private IExitState _currentState;
 
-        public StateMachine(Game game, SceneLoader sceneLoader)
+        public StateMachine(GameManagement game, SceneLoader sceneLoader)
         {
             _states = new Dictionary<Type, IState>()
             {

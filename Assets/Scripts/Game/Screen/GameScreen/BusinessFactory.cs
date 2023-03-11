@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Clicker.Core;
+using UnityEngine;
 
 namespace Clicker.UI
 {
@@ -7,9 +8,11 @@ namespace Clicker.UI
         [SerializeField] private BusinessView _businessPrefab;
         [SerializeField] private Transform _businessContainer;
 
-        public BusinessView Create()
+        public BusinessView Create(GameManagement game, BusinessData businessData, ImprovementFactory improvementFactory, int businessId)
         {
             var business = Instantiate(_businessPrefab, _businessContainer);
+
+            business.Init(game ,businessData, improvementFactory, businessId);
 
             return business;
         }

@@ -7,11 +7,20 @@ namespace Clicker.Core
         [SerializeField] private ConfigData _configData;
         [SerializeField] private ScreenSystem _screenSystem;
 
-        private Game _game;
+        private GameManagement _game;
 
         private void Awake()
         {
             DontDestroyOnLoad(this);
+        }
+
+        private void Update()
+        {
+            _game?.Tick(Time.deltaTime);
+
+            _game.ViewUpdate();
+
+            _game?.LateTick();
         }
 
         private void OnDestroy()
@@ -21,7 +30,7 @@ namespace Clicker.Core
 
         public void CreateGame()
         {
-            _game = new Game(_configData, _screenSystem);
+            _game = new GameManagement(_configData, _screenSystem);
 
             EnterInitState();
         }

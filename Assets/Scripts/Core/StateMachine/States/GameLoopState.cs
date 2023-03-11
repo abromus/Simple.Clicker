@@ -2,9 +2,9 @@
 {
     public class GameLoopState : IEnterState
     {
-        private readonly Game _game;
+        private readonly GameManagement _game;
 
-        public GameLoopState(Game game)
+        public GameLoopState(GameManagement game)
         {
             _game = game;
         }

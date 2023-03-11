@@ -7,9 +7,9 @@ namespace Clicker.Core
     {
         private const string GameSceneName = "GameScene";
 
-        private readonly Game _game;
+        private readonly GameManagement _game;
 
-        public GameState(Game game)
+        public GameState(GameManagement game)
         {
             _game = game;
         }
@@ -34,7 +34,7 @@ namespace Clicker.Core
         {
             var transform = CreateCanvas();
 
-            _game.ScreenSystem.Init(transform, _game.ConfigData.ScreenConfig);
+            _game.ScreenSystem.Init(transform, _game);
         }
 
         private Transform CreateCanvas()

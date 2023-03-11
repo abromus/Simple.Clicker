@@ -12,6 +12,6 @@ namespace Clicker.Core
         public int BasePrice;
         public int BaseIncome;
 
-        public List<ImprovementData> improvements;
+        public List<ImprovementData> Improvements;
     }
 }
