@@ -1,4 +1,5 @@
-﻿using UnityEditor.SceneManagement;
+﻿#if UNITY_EDITOR
+using UnityEditor.SceneManagement;
 using UnityEditor;
 
 namespace Clicker.Core
@@ -24,3 +25,4 @@ namespace Clicker.Core
         }
     }
 }
+#endif
