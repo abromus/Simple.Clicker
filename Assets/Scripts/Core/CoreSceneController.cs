@@ -13,6 +13,8 @@ namespace Clicker.Core
 
         private void Awake()
         {
+            Application.targetFrameRate = _configData.ApplicationConfig.TargetFrameRate;
+
             DontDestroyOnLoad(this);
         }
 
