@@ -25,6 +25,7 @@ namespace Clicker.Core
         public ConfigData ConfigData => _configData;
 
         public ScreenSystem ScreenSystem => _screenSystem;
+        public SaveSystem SaveSystem => _saveSystem;
 
         public StateMachine StateMachine => _stateMachine;
 

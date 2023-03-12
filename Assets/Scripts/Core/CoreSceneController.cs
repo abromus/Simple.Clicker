@@ -25,7 +25,7 @@ namespace Clicker.Core
             _game?.LateTick();
         }
 
-        private void OnApplicationQuit()
+        private void OnApplicationPause(bool pause)
         {
             var saveEntity = _game.World.NewEntity();
             ref var save = ref saveEntity.Get<Save>();

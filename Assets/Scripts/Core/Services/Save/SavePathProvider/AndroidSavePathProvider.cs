@@ -23,7 +23,7 @@ namespace Clicker.Core.Saves
             using var filesDir = currentActivity.Call<AndroidJavaObject>("getFilesDir");
 
             var path = filesDir.Call<string>("getAbsolutePath");
-            
+
             return path;
 #else
             return null;
