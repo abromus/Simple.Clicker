@@ -22,9 +22,10 @@ namespace Clicker.Game.Systems
                 ref var levelUp = ref _levelUpFilter.Get1(i);
 
                 var defaultLevel = 0;
+                var initLevel = levelUp.Level != defaultLevel ? levelUp.Level : defaultLevel;
 
                 if (!_world.State.BusinessProgress.ContainsKey(levelUp.Id))
-                    _world.State.BusinessProgress.Add(levelUp.Id, defaultLevel);
+                    _world.State.BusinessProgress.Add(levelUp.Id, initLevel);
 
                 _world.State.Balance -= levelUp.Price;
                 _world.State.BusinessProgress[levelUp.Id]++;

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using Clicker.Core;
 
 namespace Clicker.Game
 {
@@ -6,7 +6,6 @@ namespace Clicker.Game
     {
         public ScreenType ScreenType { get; }
 
-        public void Init(Dictionary<string, object> data);
-        public void Show(Dictionary<string, object> data);
+        public void Init(GameManagement game);
     }
 }

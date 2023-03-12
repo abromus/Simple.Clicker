@@ -8,7 +8,7 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Clicker.UI
+namespace Clicker.Game
 {
     public class Management : MonoBehaviour
     {
@@ -54,16 +54,16 @@ namespace Clicker.UI
             _isBought = businessData.IsBought;
             _id = businessId;
 
+            InitImprovements(businessData, improvementFactory);
+
+            UpdateInfo();
+
             var improvementUpdateFilterType = typeof(EcsFilter<ImprovementUpdate>);
             _improvementUpdateFilter = _game.World.GetFilter(improvementUpdateFilterType) as EcsFilter<ImprovementUpdate>;
 
             _levelUp.OnClickAsObservable().Subscribe(_ => LevelUp()).AddTo(this);
 
             game.ViewUpdated.Subscribe(_ => OnViewUpdated()).AddTo(this);
-
-            InitImprovements(businessData, improvementFactory);
-
-            UpdateInfo();
         }
 
         public void UpdateInfo()
@@ -84,6 +84,9 @@ namespace Clicker.UI
             ref var levelUp = ref levelUpEntity.Get<LevelUp>();
             levelUp.Id = _id;
             levelUp.Price = _levelUpPrice;
+
+            if(_isBought)
+                levelUp.Level = _level;
         }
 
         private void InitImprovements(BusinessData businessData, ImprovementFactory improvementFactory)
@@ -128,8 +131,6 @@ namespace Clicker.UI
 
         private void UpdateIncomeInfo()
         {
-            CalculateIncome();
-
             _incomeInfo.text = $"Доход\n{_income}$";
         }
 

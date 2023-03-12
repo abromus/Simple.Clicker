@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Clicker.Core.Saves.Components;
+using Leopotam.Ecs;
+using UnityEngine;
 
 namespace Clicker.Core
 {
@@ -19,6 +21,14 @@ namespace Clicker.Core
             _game?.Tick(Time.deltaTime);
 
             _game.ViewUpdate();
+
+            _game?.LateTick();
+        }
+
+        private void OnApplicationQuit()
+        {
+            var saveEntity = _game.World.NewEntity();
+            ref var save = ref saveEntity.Get<Save>();
 
             _game?.LateTick();
         }

@@ -7,13 +7,11 @@ namespace Clicker.Core
     {
         public int BusinessId;
         public int ImprovementId;
-        public bool IsBought;
 
-        public ImprovementInfo(int businessId, int improvementId, bool isBought)
+        public ImprovementInfo(int businessId, int improvementId)
         {
             BusinessId = businessId;
             ImprovementId = improvementId;
-            IsBought = isBought;
         }
     }
 }

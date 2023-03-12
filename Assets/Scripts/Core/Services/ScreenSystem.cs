@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Clicker.Game;
 using UnityEngine;
 
@@ -25,10 +24,7 @@ namespace Clicker.Core
 
             var screen = Instantiate(screenPrefab, _transform);
 
-            var data = new Dictionary<string, object>();
-            data[GameScreen.GameKey] = _game;
-
-            screen.Show(data);
+            screen.Init(_game);
         }
     }
 }

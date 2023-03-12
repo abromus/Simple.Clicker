@@ -4,5 +4,6 @@ namespace Clicker.Game.Components
     {
         public int Id;
         public int Price;
+        public int Level;
     }
 }

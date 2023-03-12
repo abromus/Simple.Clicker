@@ -25,8 +25,7 @@ namespace Clicker.Game.Systems
 
                 _world.State.Improvements.Add(new ImprovementInfo(
                     improvementPurchase.BusinessId,
-                    improvementPurchase.ImprovementId,
-                    true));
+                    improvementPurchase.ImprovementId));
 
                 var updateEntity = _world.NewEntity();
                 ref var updateInfo = ref updateEntity.Get<ImprovementUpdate>();

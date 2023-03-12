@@ -1,7 +1,7 @@
 ﻿using Clicker.Core;
 using UnityEngine;
 
-namespace Clicker.UI
+namespace Clicker.Game
 {
     public class BusinessFactory : MonoBehaviour
     {

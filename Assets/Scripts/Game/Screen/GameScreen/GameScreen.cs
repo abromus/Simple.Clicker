@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using Clicker.Core;
 using Clicker.Game.Components;
-using Clicker.UI;
 using Leopotam.Ecs;
+using SimpleJSON;
 using TMPro;
 using UniRx;
 using UnityEngine;
@@ -17,19 +17,20 @@ namespace Clicker.Game
         [SerializeField] private ImprovementFactory _improvementFactory;
 
         private GameManagement _game;
+
         private List<BusinessView> _businessViews;
 
         private CompositeDisposable _subscription;
 
         private EcsFilter<BalanceUpdate> _balanceUpdateFilter;
 
-        public const string GameKey = "game_key";
-
         public override ScreenType ScreenType => ScreenType.Game;
 
-        public override void Init(Dictionary<string, object> data)
+        public override void Init(GameManagement game)
         {
-            _game = (GameManagement)data[GameKey];
+            base.Init(game);
+
+            _game = game;
 
             _businessViews = new List<BusinessView>();
 
@@ -42,11 +43,6 @@ namespace Clicker.Game
 
             CreateBusiness();
             UpdateBalance();
-        }
-
-        public override void Show(Dictionary<string, object> data)
-        {
-            base.Show(data);
         }
 
         private void OnViewUpdated()

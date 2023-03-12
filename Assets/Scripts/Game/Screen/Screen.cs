@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using Clicker.Core;
 using UnityEngine;
 
 namespace Clicker.Game
@@ -7,11 +7,6 @@ namespace Clicker.Game
     {
         public virtual ScreenType ScreenType { get; }
 
-        public virtual void Init(Dictionary<string, object> data) { }
-
-        public virtual void Show(Dictionary<string, object> data)
-        {
-            Init(data);
-        }
+        public virtual void Init(GameManagement game) { }
     }
 }
