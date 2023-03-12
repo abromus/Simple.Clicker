@@ -13,63 +13,63 @@ MonoBehaviour:
   m_Name: BusinessConfig
   m_EditorClassIdentifier: 
   _businessData:
-  - Title: "\u0411\u0438\u0437\u043D\u0435\u0441 1"
+  - Title: BUSINESS_1
     IsBought: 1
     DelayIncome: 3
     BasePrice: 3
     BaseIncome: 3
     Improvements:
-    - Title: "\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435 1"
+    - Title: IMPROVEMENT_TITLE_1_1
       Price: 50
       IncomeFactor: 0.5
-    - Title: "\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435 2"
+    - Title: IMPROVEMENT_TITLE_1_2
       Price: 400
       IncomeFactor: 1
-  - Title: "\u0411\u0438\u0437\u043D\u0435\u0441 2"
+  - Title: BUSINESS_2
     IsBought: 0
     DelayIncome: 6
     BasePrice: 40
     BaseIncome: 40
     Improvements:
-    - Title: "\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435 1"
+    - Title: IMPROVEMENT_TITLE_2_1
       Price: 1200
       IncomeFactor: 1
-    - Title: "\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435 2"
+    - Title: IMPROVEMENT_TITLE_2_2
       Price: 4000
       IncomeFactor: 2
-  - Title: "\u0411\u0438\u0437\u043D\u0435\u0441 3"
+  - Title: BUSINESS_3
     IsBought: 0
     DelayIncome: 10
     BasePrice: 200
     BaseIncome: 200
     Improvements:
-    - Title: "\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435 1"
+    - Title: IMPROVEMENT_TITLE_3_1
       Price: 6000
       IncomeFactor: 1
-    - Title: "\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435 2"
+    - Title: IMPROVEMENT_TITLE_3_2
       Price: 20000
       IncomeFactor: 1.5
-  - Title: "\u0411\u0438\u0437\u043D\u0435\u0441 4"
+  - Title: BUSINESS_4
     IsBought: 0
     DelayIncome: 17
     BasePrice: 1000
     BaseIncome: 1000
     Improvements:
-    - Title: "\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435 1"
+    - Title: IMPROVEMENT_TITLE_4_1
       Price: 15000
       IncomeFactor: 1
-    - Title: "\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435 2"
+    - Title: IMPROVEMENT_TITLE_4_2
       Price: 50000
       IncomeFactor: 2
-  - Title: "\u0411\u0438\u0437\u043D\u0435\u0441 5"
+  - Title: BUSINESS_5
     IsBought: 0
     DelayIncome: 30
     BasePrice: 5000
     BaseIncome: 5000
     Improvements:
-    - Title: "\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435 1"
+    - Title: IMPROVEMENT_TITLE_5_1
       Price: 100000
       IncomeFactor: 2
-    - Title: "\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435 2"
+    - Title: IMPROVEMENT_TITLE_5_2
       Price: 500000
       IncomeFactor: 4

@@ -15,3 +15,4 @@ MonoBehaviour:
   _canvasConfig: {fileID: 11400000, guid: 33d6df15c05d02549a8de0a6861f54b2, type: 2}
   _screenConfig: {fileID: 11400000, guid: 95fcd77a2d50a4042ba2b9ef456859e3, type: 2}
   _businessConfig: {fileID: 11400000, guid: 6d5df79a8d43fbc4d8362e4ca0444f4b, type: 2}
+  _localizationConfig: {fileID: 11400000, guid: a32db30994fc2c045895bec2e7b50e34, type: 2}

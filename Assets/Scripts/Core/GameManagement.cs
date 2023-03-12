@@ -12,9 +12,10 @@ namespace Clicker.Core
         private readonly ScreenSystem _screenSystem;
 
         private readonly Subject<Null> _viewUpdated;
+
         private readonly SaveSystem _saveSystem;
         private readonly StateMachine _stateMachine;
-
+        private readonly LocalizationSystem _localizationSystem;
         private GameWorld _world;
 
         private EcsSystems _initSystems;
@@ -26,6 +27,8 @@ namespace Clicker.Core
         public ScreenSystem ScreenSystem => _screenSystem;
 
         public StateMachine StateMachine => _stateMachine;
+
+        public LocalizationSystem LocalizationSystem => _localizationSystem;
 
         public GameWorld World => _world;
 
@@ -40,6 +43,8 @@ namespace Clicker.Core
 
             var sceneLoader = new SceneLoader();
             _stateMachine = new StateMachine(this, sceneLoader);
+
+            _localizationSystem = new LocalizationSystem(_configData.LocalizationConfig);
 
             _saveSystem = new SaveSystem();
 

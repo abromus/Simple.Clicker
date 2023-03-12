@@ -7,11 +7,11 @@ namespace Clicker.Game
     {
         [SerializeField] private Improvement _improvementPrefab;
 
-        public Improvement Create(GameWorld world, ImprovementData improvementData, Transform container, int businessId, int improvementId)
+        public Improvement Create(GameWorld world, LocalizationSystem localizationSystem, ImprovementData improvementData, Transform container, int businessId, int improvementId)
         {
             var improvement = Instantiate(_improvementPrefab, container);
 
-            improvement.Init(world, improvementData, businessId, improvementId);
+            improvement.Init(world, localizationSystem, improvementData, businessId, improvementId);
 
             return improvement;
         }

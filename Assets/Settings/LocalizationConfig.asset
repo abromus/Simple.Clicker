@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38cb48a841a4c6c46a78fa51e82b1ca5, type: 3}
+  m_Name: LocalizationConfig
+  m_EditorClassIdentifier: 
+  _localizationData:
+  - Key: BALANCE
+    Value: "\u0411\u0430\u043B\u0430\u043D\u0441: {0}$"
+  - Key: BUSINESS_1
+    Value: "\u0411\u0438\u0437\u043D\u0435\u0441 1"
+  - Key: BUSINESS_2
+    Value: "\u0411\u0438\u0437\u043D\u0435\u0441 2"
+  - Key: BUSINESS_3
+    Value: "\u0411\u0438\u0437\u043D\u0435\u0441 3"
+  - Key: BUSINESS_4
+    Value: "\u0411\u0438\u0437\u043D\u0435\u0441 4"
+  - Key: BUSINESS_5
+    Value: "\u0411\u0438\u0437\u043D\u0435\u0441 5"
+  - Key: IMPROVEMENT_INCOME
+    Value: "\u0414\u043E\u0445\u043E\u0434: {0}%"
+  - Key: IMPROVEMENT_INFO
+    Value: '{0}\n{1}\n{2}'
+  - Key: IMPROVEMENT_TITLE_1_1
+    Value: "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u0435 1_1"
+  - Key: IMPROVEMENT_TITLE_1_2
+    Value: "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u0435 1_2"
+  - Key: IMPROVEMENT_TITLE_2_1
+    Value: "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u0435 2_1"
+  - Key: IMPROVEMENT_TITLE_2_2
+    Value: "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u0435 2_2"
+  - Key: IMPROVEMENT_TITLE_3_1
+    Value: "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u0435 3_1"
+  - Key: IMPROVEMENT_TITLE_3_2
+    Value: "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u0435 3_2"
+  - Key: IMPROVEMENT_TITLE_4_1
+    Value: "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u0435 4_1"
+  - Key: IMPROVEMENT_TITLE_4_2
+    Value: "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u0435 4_2"
+  - Key: IMPROVEMENT_TITLE_5_1
+    Value: "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u0435 5_1"
+  - Key: IMPROVEMENT_TITLE_5_2
+    Value: "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u0435 5_2"
+  - Key: INCOME_INFO
+    Value: "\u0414\u043E\u0445\u043E\u0434\\n{0}$"
+  - Key: IS_BOUGHT
+    Value: "\u041A\u0443\u043F\u043B\u0435\u043D\u043E"
+  - Key: LEVEL_INFO
+    Value: LVL\n{0}
+  - Key: LEVEL_UP
+    Value: LVL UP\n{0}
+  - Key: PRICE
+    Value: "\u0426\u0435\u043D\u0430: {0}$"

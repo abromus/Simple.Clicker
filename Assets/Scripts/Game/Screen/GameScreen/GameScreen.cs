@@ -57,7 +57,7 @@ namespace Clicker.Game
 
         private void UpdateBalance()
         {
-            _balance.text = $"{_game.World.State.Balance}$";
+            _balance.text = string.Format(_game.LocalizationSystem.Get(LocalizationKeys.Balance), _game.World.State.Balance);
         }
 
         private void CreateBusiness()

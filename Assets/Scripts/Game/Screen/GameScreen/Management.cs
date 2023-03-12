@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Clicker.Core;
 using Clicker.Game.Components;
@@ -85,7 +86,7 @@ namespace Clicker.Game
             levelUp.Id = _id;
             levelUp.Price = _levelUpPrice;
 
-            if(_isBought)
+            if (_isBought)
                 levelUp.Level = _level;
         }
 
@@ -98,7 +99,7 @@ namespace Clicker.Game
             {
                 improvementId++;
 
-                var improvement = improvementFactory.Create(_game.World, improvementData, _improvementContainer, _id, improvementId);
+                var improvement = improvementFactory.Create(_game.World, _game.LocalizationSystem, improvementData, _improvementContainer, _id, improvementId);
 
                 _improvements.Add(improvement);
             }
@@ -126,24 +127,26 @@ namespace Clicker.Game
 
         private void UpdateLevelInfo()
         {
-            _levelInfo.text = $"LVL\n{_level}";
+            _levelInfo.text = string.Format(_game.LocalizationSystem.Get(LocalizationKeys.LevelInfo), _level);
         }
 
         private void UpdateIncomeInfo()
         {
-            _incomeInfo.text = $"Доход\n{_income}$";
+            _incomeInfo.text = string.Format(_game.LocalizationSystem.Get(LocalizationKeys.IncomeInfo), _income);
         }
 
         private void UpdateLevelUpInfo()
         {
             _levelUpPrice = _basePrice * (_level + 1);
-            _levelUpInfo.text = $"LVL UP\nЦена: {_levelUpPrice}$";
+
+            var price = string.Format(_game.LocalizationSystem.Get(LocalizationKeys.Price), _levelUpPrice);
+            _levelUpInfo.text = string.Format(_game.LocalizationSystem.Get(LocalizationKeys.LevelUp), price);
         }
 
         private void UpdateLevel()
         {
             _level = _game.World.State.BusinessProgress.ContainsKey(_id)
-                ? _game.World.State.BusinessProgress[_id] 
+                ? _game.World.State.BusinessProgress[_id]
                 : _isBought
                     ? _defaultLevel
                     : _lockLevel;

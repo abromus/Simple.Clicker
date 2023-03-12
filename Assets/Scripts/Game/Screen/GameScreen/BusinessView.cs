@@ -18,6 +18,8 @@ namespace Clicker.Game
         private readonly float _defaultProgress = 0f;
 
         private GameManagement _game;
+        private LocalizationSystem _localizationSystem;
+
         private float _delayIncome;
         private int _id;
 
@@ -29,8 +31,10 @@ namespace Clicker.Game
         public void Init(GameManagement game, BusinessData businessData, ImprovementFactory improvementFactory, int id)
         {
             _game = game;
+            _localizationSystem = _game.LocalizationSystem;
             _id = id;
-            _title.text = businessData.Title;
+
+            _title.text = string.Format(_localizationSystem.Get(businessData.Title));
             _delayIncome = businessData.DelayIncome;
 
             _management.Init(game, businessData, improvementFactory, id);

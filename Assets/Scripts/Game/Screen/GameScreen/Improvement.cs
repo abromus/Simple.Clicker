@@ -15,6 +15,7 @@ namespace Clicker.Game
         [SerializeField] private TMP_Text _info;
 
         private GameWorld _world;
+        private LocalizationSystem _localizationSystem;
         private string _title;
         private int _price;
         private float _incomeFactor;
@@ -29,10 +30,11 @@ namespace Clicker.Game
 
         public float IncomeFactor => _isBought ? _incomeFactor : _defaultIncomeFactor;
 
-        public void Init(GameWorld world, ImprovementData config, int businessId, int improvementId)
+        public void Init(GameWorld world, LocalizationSystem localizationSystem, ImprovementData config, int businessId, int improvementId)
         {
             _world = world;
-            _title = config.Title;
+            _localizationSystem = localizationSystem;
+            _title = string.Format(_localizationSystem.Get(config.Title), _businessId, _improvementId);
             _price = config.Price;
             _incomeFactor = config.IncomeFactor;
             _businessId = businessId;
@@ -53,8 +55,12 @@ namespace Clicker.Game
             _button.interactable = !_isBought;
 
             var percents = 100f;
-            var state = _isBought ? "Куплено" : $"Цена: {_price}$";
-            _info.text = $"{_title}\nДоход: +{_incomeFactor * percents}%\n{state}";
+            var income = string.Format(_localizationSystem.Get(LocalizationKeys.ImprovementIncome), _incomeFactor * percents);
+            var state = _isBought
+                ? _localizationSystem.Get(LocalizationKeys.IsBought)
+                : string.Format(_localizationSystem.Get(LocalizationKeys.Price), _price);
+
+            _info.text = string.Format(_localizationSystem.Get(LocalizationKeys.ImprovementInfo), _title, income, state);
         }
 
         private void Buy()
