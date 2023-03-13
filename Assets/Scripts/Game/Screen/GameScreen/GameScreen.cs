@@ -1,22 +1,22 @@
 using System.Collections.Generic;
+using System.Linq;
 using Clicker.Core;
+using Clicker.Core.Factories;
 using Clicker.Game.Components;
 using Leopotam.Ecs;
-using SimpleJSON;
 using TMPro;
 using UniRx;
 using UnityEngine;
 
-namespace Clicker.Game
+namespace Clicker.Game.Screens
 {
-    public class GameScreen : Screen
+    public sealed class GameScreen : Screen
     {
         [SerializeField] private TMP_Text _balance;
 
-        [SerializeField] private BusinessFactory _businessFactory;
-        [SerializeField] private ImprovementFactory _improvementFactory;
+        [SerializeField] private Transform _businessContainer;
 
-        private GameManagement _game;
+        private GameScreenOptions _options;
 
         private List<BusinessView> _businessViews;
 
@@ -26,23 +26,48 @@ namespace Clicker.Game
 
         public override ScreenType ScreenType => ScreenType.Game;
 
-        public override void Init(GameManagement game)
+        public override void Init(BaseOptions options)
         {
-            base.Init(game);
-
-            _game = game;
+            _options = options as GameScreenOptions;
 
             _businessViews = new List<BusinessView>();
 
             _subscription = new CompositeDisposable();
 
-            var balanceUpdateFilterType = typeof(EcsFilter<BalanceUpdate>);
-            _balanceUpdateFilter = _game.World.GetFilter(balanceUpdateFilterType) as EcsFilter<BalanceUpdate>;
-
-            _game.ViewUpdated.Subscribe(_ => OnViewUpdated()).AddTo(_subscription);
+            _balanceUpdateFilter = _options.World.CreateFilter<EcsFilter<BalanceUpdate>>();
 
             CreateBusiness();
             UpdateBalance();
+
+            _options.ViewUpdated.Subscribe(_ => OnViewUpdated()).AddTo(_subscription);
+        }
+
+        private void UpdateBalance()
+        {
+            _balance.text = _options.LocalizationSystem.Get(LocalizationKeys.Balance, _options.World.State.Balance.ToString());
+        }
+
+        private void CreateBusiness()
+        {
+            var businessConfig = _options.ConfigData.BusinessConfig.BusinessData;
+            var businessId = 0;
+
+            foreach (var businessData in businessConfig)
+            {
+                businessId++;
+
+                var options = new BusinessViewOptions(
+                    _options,
+                    businessId,
+                    businessData);
+
+                var businessFactory = _options.UiFactories
+                    .FirstOrDefault(factory => factory.UiFactoryType == UiFactoryType.BusinessFactory);
+
+                var businessView = businessFactory.Create(options, _businessContainer) as BusinessView;
+
+                _businessViews.Add(businessView);
+            }
         }
 
         private void OnViewUpdated()
@@ -52,25 +77,6 @@ namespace Clicker.Game
                 UpdateBalance();
 
                 _balanceUpdateFilter.GetEntity(i).Del<BalanceUpdate>();
-            }
-        }
-
-        private void UpdateBalance()
-        {
-            _balance.text = string.Format(_game.LocalizationSystem.Get(LocalizationKeys.Balance), _game.World.State.Balance);
-        }
-
-        private void CreateBusiness()
-        {
-            var businessConfig = _game.ConfigData.BusinessConfig.BusinessData;
-            var businessId = 0;
-
-            foreach (var businessData in businessConfig)
-            {
-                businessId++;
-
-                var businessView = _businessFactory.Create(_game, businessData, _improvementFactory, businessId);
-                _businessViews.Add(businessView);
             }
         }
     }

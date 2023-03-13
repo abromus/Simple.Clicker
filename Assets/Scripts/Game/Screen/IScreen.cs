@@ -1,11 +1,9 @@
-﻿using Clicker.Core;
-
-namespace Clicker.Game
+﻿namespace Clicker.Game.Screens
 {
     public interface IScreen
     {
         public ScreenType ScreenType { get; }
 
-        public void Init(GameManagement game);
+        public void Init(BaseOptions options);
     }
 }

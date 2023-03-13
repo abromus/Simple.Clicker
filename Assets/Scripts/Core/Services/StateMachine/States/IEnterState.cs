@@ -1,4 +1,4 @@
-﻿namespace Clicker.Core
+﻿namespace Clicker.Core.Services
 {
     public interface IEnterState : IExitState
     {

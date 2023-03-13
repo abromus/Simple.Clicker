@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Clicker.Core
+namespace Clicker.Core.Services
 {
-    public class Bootstrapper : MonoBehaviour
+    public sealed class Bootstrapper : MonoBehaviour
     {
         [SerializeField] private CoreSceneController _coreSceneController;
 

@@ -1,4 +1,4 @@
-﻿namespace Clicker.Game
+﻿namespace Clicker.Game.Screens
 {
     public enum ScreenType
     {

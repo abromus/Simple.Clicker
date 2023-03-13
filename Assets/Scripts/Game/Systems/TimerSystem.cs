@@ -1,16 +1,16 @@
-﻿using Clicker.Core;
+﻿using Clicker.Core.World;
 using Clicker.Game.Components;
 using Leopotam.Ecs;
 
 namespace Clicker.Game.Systems
 {
-    public class TimerSystem : IEcsRunSystem
+    public sealed class TimerSystem : IEcsRunSystem
     {
-        private readonly GameWorld _world;
+        private readonly IWorld _world;
 
         private readonly EcsFilter<Timer> _timerFilter;
 
-        public TimerSystem(GameWorld world)
+        public TimerSystem(IWorld world)
         {
             _world = world;
         }

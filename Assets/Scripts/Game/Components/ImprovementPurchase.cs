@@ -2,8 +2,10 @@
 {
     public struct ImprovementPurchase
     {
-        public int BusinessId;
-        public int ImprovementId;
-        public int Price;
+        public int BusinessId { get; set; }
+
+        public int ImprovementId { get; set; }
+
+        public int Price { get; set; }
     }
 }

@@ -217,7 +217,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1408102249}
   - component: {fileID: 1408102250}
-  - component: {fileID: 1408102251}
   m_Layer: 0
   m_Name: CoreSceneController
   m_TagString: Untagged
@@ -253,19 +252,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _configData: {fileID: 11400000, guid: ee4b38a1bf320e641b292e24497a6d33, type: 2}
-  _screenSystem: {fileID: 1408102251}
---- !u!114 &1408102251
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1408102247}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8538834a7da6e1b40b65e0f0633c5e08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1600585918
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,12 +1,14 @@
 ﻿using System;
 
-namespace Clicker.Core
+namespace Clicker.Core.Settings
 {
     [Serializable]
-    public class ImprovementData
+    public sealed class ImprovementData
     {
         public string Title;
+
         public int Price;
+
         public float IncomeFactor;
     }
 }

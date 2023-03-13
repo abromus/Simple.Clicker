@@ -1,12 +1,13 @@
 ﻿using System;
 
-namespace Clicker.Core
+namespace Clicker.Core.Components
 {
     [Serializable]
-    public class ImprovementInfo
+    public sealed class ImprovementInfo
     {
-        public int BusinessId;
-        public int ImprovementId;
+        public int BusinessId { get; }
+
+        public int ImprovementId { get; }
 
         public ImprovementInfo(int businessId, int improvementId)
         {

@@ -1,10 +1,10 @@
-﻿namespace Clicker.Core
+﻿namespace Clicker.Core.Services
 {
-    public class SceneLoaderState : IEnterState<SceneInfo>
+    public sealed class SceneLoaderState : IEnterState<SceneInfo>
     {
-        private readonly SceneLoader _sceneLoader;
+        private readonly ISceneLoader _sceneLoader;
 
-        public SceneLoaderState(SceneLoader sceneLoader)
+        public SceneLoaderState(ISceneLoader sceneLoader)
         {
             _sceneLoader = sceneLoader;
         }

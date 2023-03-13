@@ -2,6 +2,6 @@
 {
     public struct LevelUpdate
     {
-        public int Id;
+        public int Id { get; set; }
     }
 }

@@ -1,11 +1,12 @@
 ﻿using System;
 
-namespace Clicker.Core
+namespace Clicker.Core.Settings
 {
     [Serializable]
-    public class LocalizationData
+    public sealed class LocalizationData
     {
         public string Key;
+
         public string Value;
     }
 }

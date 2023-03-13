@@ -1,6 +1,6 @@
-﻿namespace Clicker.Core.Saves
+﻿namespace Clicker.Core.Services
 {
-    public class EditorSavePathProvider : SavePathProvider
+    public sealed class EditorSavePathProvider : SavePathProvider
     {
         private const string EditorFileName = "save";
         private const string EditorBackupFileName = "save.backup";

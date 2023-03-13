@@ -1,15 +1,16 @@
 ﻿#if UNITY_EDITOR
-using UnityEditor.SceneManagement;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 
-namespace Clicker.Core
+namespace Clicker.Core.Services
 {
     [InitializeOnLoad]
-    public class BootstrapSceneManagement
+    public sealed class BootstrapSceneManagement
     {
         static BootstrapSceneManagement()
         {
             OnSceneListChanged();
+
             EditorBuildSettings.sceneListChanged += OnSceneListChanged;
         }
 

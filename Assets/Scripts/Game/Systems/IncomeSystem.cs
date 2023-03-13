@@ -1,16 +1,16 @@
-﻿using Clicker.Core;
+﻿using Clicker.Core.World;
 using Clicker.Game.Components;
 using Leopotam.Ecs;
 
 namespace Clicker.Game.Systems
 {
-    public class IncomeSystem : IEcsRunSystem
+    public sealed class IncomeSystem : IEcsRunSystem
     {
-        private readonly GameWorld _world;
+        private readonly IWorld _world;
 
         private readonly EcsFilter<Income> _incomeFilter;
 
-        public IncomeSystem(GameWorld world)
+        public IncomeSystem(IWorld world)
         {
             _world = world;
         }

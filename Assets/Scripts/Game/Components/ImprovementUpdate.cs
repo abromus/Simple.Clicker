@@ -2,7 +2,8 @@
 {
     public struct ImprovementUpdate
     {
-        public int BusinessId;
-        public int ImprovementId;
+        public int BusinessId { get; set; }
+
+        public int ImprovementId { get; set; }
     }
 }

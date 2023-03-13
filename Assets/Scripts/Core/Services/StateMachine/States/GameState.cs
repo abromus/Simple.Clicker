@@ -1,24 +1,29 @@
-﻿using UnityEngine.UI;
+﻿using Clicker.Core.Settings;
 using UnityEngine;
+using UnityEngine.UI;
 
-namespace Clicker.Core
+namespace Clicker.Core.Services
 {
-    public class GameState : IEnterState
+    public sealed class GameState : IEnterState
     {
-        private const string GameSceneName = "GameScene";
+        private readonly IGameManagement _game;
+        private readonly IStateMachine _stateMachine;
+        private readonly IScreenSystem _screenSystem;
+        private readonly CanvasConfig _canvasConfig;
 
-        private readonly GameManagement _game;
-
-        public GameState(GameManagement game)
+        public GameState(IGameManagement game, IStateMachine stateMachine, IScreenSystem screenSystem, CanvasConfig canvasConfig)
         {
             _game = game;
+            _stateMachine = stateMachine;
+            _screenSystem = screenSystem;
+            _canvasConfig = canvasConfig;
         }
 
         public void Enter()
         {
-            var gameSceneInfo = new SceneInfo(GameSceneName, OnSceneLoad);
+            var gameSceneInfo = new SceneInfo(SceneKeys.GameSceneName, OnSceneLoad);
 
-            _game.StateMachine.Enter<SceneLoaderState, SceneInfo>(gameSceneInfo);
+            _stateMachine.Enter<SceneLoaderState, SceneInfo>(gameSceneInfo);
         }
 
         public void Exit() { }
@@ -27,47 +32,45 @@ namespace Clicker.Core
         {
             InitScreenSystem();
 
-            _game.StateMachine.Enter<GameLoopState>();
+            _stateMachine.Enter<GameLoopState>();
         }
-        
+
         private void InitScreenSystem()
         {
             var transform = CreateCanvas();
 
-            _game.ScreenSystem.Init(transform, _game);
+            _screenSystem.Init(_game, transform);
         }
 
         private Transform CreateCanvas()
         {
-            var config = _game.ConfigData.CanvasConfig;
-
             var canvasObject = new GameObject();
-            canvasObject.name = config.Name;
+            canvasObject.name = _canvasConfig.Name;
 
-            AddCanvas(config, canvasObject);
-            AddCanvasScaler(config, canvasObject);
+            AddCanvas(canvasObject);
+            AddCanvasScaler(canvasObject);
             AddGraphicRaycaster(canvasObject);
 
             return canvasObject.transform;
         }
 
-        private static void AddCanvas(CanvasConfig config, GameObject canvasObject)
+        private void AddCanvas(GameObject canvasObject)
         {
             var canvas = canvasObject.AddComponent<Canvas>();
-            canvas.renderMode = config.RenderMode;
+            canvas.renderMode = _canvasConfig.RenderMode;
             canvas.worldCamera = Camera.main;
         }
 
-        private static void AddCanvasScaler(CanvasConfig config, GameObject canvasObject)
+        private void AddCanvasScaler(GameObject canvasObject)
         {
             var canvasScaler = canvasObject.AddComponent<CanvasScaler>();
-            canvasScaler.uiScaleMode = config.ScaleMode;
-            canvasScaler.referenceResolution = config.ReferenceResolution;
-            canvasScaler.matchWidthOrHeight = config.MatchWidthOrHeight;
-            canvasScaler.referencePixelsPerUnit = config.ReferencePixelsPerUnit;
+            canvasScaler.uiScaleMode = _canvasConfig.ScaleMode;
+            canvasScaler.referenceResolution = _canvasConfig.ReferenceResolution;
+            canvasScaler.matchWidthOrHeight = _canvasConfig.MatchWidthOrHeight;
+            canvasScaler.referencePixelsPerUnit = _canvasConfig.ReferencePixelsPerUnit;
         }
 
-        private static void AddGraphicRaycaster(GameObject canvasObject)
+        private void AddGraphicRaycaster(GameObject canvasObject)
         {
             canvasObject.AddComponent<GraphicRaycaster>();
         }

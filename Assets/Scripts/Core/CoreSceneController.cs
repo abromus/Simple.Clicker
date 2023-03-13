@@ -1,15 +1,16 @@
-﻿using Clicker.Core.Saves.Components;
+﻿using Clicker.Core.Components;
+using Clicker.Core.Services;
+using Clicker.Core.Settings;
 using Leopotam.Ecs;
 using UnityEngine;
 
 namespace Clicker.Core
 {
-    public class CoreSceneController : MonoBehaviour
+    public sealed class CoreSceneController : MonoBehaviour
     {
         [SerializeField] private ConfigData _configData;
-        [SerializeField] private ScreenSystem _screenSystem;
 
-        private GameManagement _game;
+        private IGameManagement _game;
 
         private void Awake()
         {
@@ -29,10 +30,12 @@ namespace Clicker.Core
 
         private void OnApplicationPause(bool pause)
         {
-            var saveEntity = _game.World.NewEntity();
-            ref var save = ref saveEntity.Get<Save>();
+            SaveGame();
+        }
 
-            _game?.LateTick();
+        private void OnApplicationQuit()
+        {
+            SaveGame();
         }
 
         private void OnDestroy()
@@ -42,14 +45,22 @@ namespace Clicker.Core
 
         public void CreateGame()
         {
-            _game = new GameManagement(_configData, _screenSystem);
+            _game = new GameManagement(_configData);
 
             EnterInitState();
         }
 
         private void EnterInitState()
         {
-            _game.StateMachine.Enter<BootstrapState>();
+            _game.ServiceStorage.GetService<IStateMachine>().Enter<BootstrapState>();
+        }
+
+        private void SaveGame()
+        {
+            var saveEntity = _game.World.NewEntity();
+            ref var save = ref saveEntity.Get<Save>();
+
+            _game?.LateTick();
         }
     }
 }

@@ -2,11 +2,11 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine.SceneManagement;
 
-namespace Clicker.Core
+namespace Clicker.Core.Services
 {
-    public class SceneLoader
+    public sealed class SceneLoader: ISceneLoader, IService
     {
-        public void Load(string name, Action success = null)
+        public void Load(string name, Action success)
         {
             LoadScene(name, success);
         }

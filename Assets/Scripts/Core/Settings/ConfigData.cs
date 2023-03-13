@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
 
-namespace Clicker.Core
+namespace Clicker.Core.Settings
 {
     [CreateAssetMenu(fileName = "ConfigData", menuName = "Settings/ConfigData")]
-    public class ConfigData : ScriptableObject
+    public sealed class ConfigData : ScriptableObject
     {
         [SerializeField] private ApplicationConfig _applicationConfig;
         [SerializeField] private BusinessConfig _businessConfig;
         [SerializeField] private CanvasConfig _canvasConfig;
-        [SerializeField] private ScreenConfig _screenConfig;
         [SerializeField] private LocalizationConfig _localizationConfig;
+        [SerializeField] private ScreenConfig _screenConfig;
+        [SerializeField] private UiFactoryConfig _uiFactoryConfig;
+        [SerializeField] private UiServiceConfig _uiServiceConfig;
 
         public ApplicationConfig ApplicationConfig => _applicationConfig;
 
@@ -17,8 +19,12 @@ namespace Clicker.Core
 
         public CanvasConfig CanvasConfig => _canvasConfig;
 
+        public LocalizationConfig LocalizationConfig => _localizationConfig;
+
         public ScreenConfig ScreenConfig => _screenConfig;
 
-        public LocalizationConfig LocalizationConfig => _localizationConfig;
+        public UiFactoryConfig UiFactoryConfig => _uiFactoryConfig;
+
+        public UiServiceConfig UiServiceConfig => _uiServiceConfig;
     }
 }

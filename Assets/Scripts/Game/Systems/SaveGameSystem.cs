@@ -1,16 +1,16 @@
-﻿using Clicker.Core.Saves;
-using Clicker.Core.Saves.Components;
+﻿using Clicker.Core.Components;
+using Clicker.Core.Services;
 using Leopotam.Ecs;
 
 namespace Clicker.Game.Systems
 {
-    public class SaveGameSystem : IEcsRunSystem
+    public sealed class SaveGameSystem : IEcsRunSystem
     {
-        private readonly SaveSystem _saveSystem;
+        private readonly ISaveSystem _saveSystem;
 
         private readonly EcsFilter<Save> _saveFilter;
 
-        public SaveGameSystem(SaveSystem saveSystem)
+        public SaveGameSystem(ISaveSystem saveSystem)
         {
             _saveSystem = saveSystem;
         }

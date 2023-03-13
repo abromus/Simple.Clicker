@@ -1,22 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Clicker.Core
+namespace Clicker.Core.Services
 {
-    public class StateMachine : IStateMachine
+    public sealed class StateMachine : IStateMachine, IService
     {
         private readonly Dictionary<Type, IState> _states;
 
         private IExitState _currentState;
 
-        public StateMachine(GameManagement game, SceneLoader sceneLoader)
+        public StateMachine(IGameManagement game, IScreenSystem screenSystem, ISceneLoader sceneLoader)
         {
             _states = new Dictionary<Type, IState>()
             {
                 [typeof(BootstrapState)] = new BootstrapState(this),
-                [typeof(GameState)] = new GameState(game),
+                [typeof(GameState)] = new GameState(
+                    game,
+                    this,
+                    screenSystem,
+                    game.ConfigData.CanvasConfig),
                 [typeof(SceneLoaderState)] = new SceneLoaderState(sceneLoader),
-                [typeof(GameLoopState)] = new GameLoopState(game),
+                [typeof(GameLoopState)] = new GameLoopState(screenSystem),
             };
         }
 

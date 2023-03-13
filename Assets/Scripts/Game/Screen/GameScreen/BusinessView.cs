@@ -1,4 +1,6 @@
 using Clicker.Core;
+using Clicker.Core.Services;
+using Clicker.Core.World;
 using Clicker.Game.Components;
 using Leopotam.Ecs;
 using TMPro;
@@ -6,55 +8,57 @@ using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Clicker.Game
+namespace Clicker.Game.Screens
 {
-    public class BusinessView : MonoBehaviour
+    public sealed class BusinessView : MonoBehaviour
     {
         [SerializeField] private TMP_Text _title;
         [SerializeField] private Slider _progress;
         [SerializeField] private Management _management;
 
-        private readonly int _lockLevel = 0;
-        private readonly float _defaultProgress = 0f;
+        private IWorld _world;
+        private ILocalizationSystem _localizationSystem;
 
-        private GameManagement _game;
-        private LocalizationSystem _localizationSystem;
-
-        private float _delayIncome;
         private int _id;
+        private float _delayIncome;
 
         private EcsEntity _timerEntity;
+
+        private readonly int _lockLevel = 0;
+        private readonly float _defaultProgress = 0f;
 
         private EcsFilter<LevelUpdate> _levelUpdateFilter;
         private EcsFilter<Timer> _timerFilter;
 
-        public void Init(GameManagement game, BusinessData businessData, ImprovementFactory improvementFactory, int id)
+        public void Init(BusinessViewOptions options)
         {
-            _game = game;
-            _localizationSystem = _game.LocalizationSystem;
-            _id = id;
+            _world = options.GameOptions.World;
+            _localizationSystem = options.GameOptions.LocalizationSystem;
+            _id = options.BusinessId;
 
-            _title.text = string.Format(_localizationSystem.Get(businessData.Title));
-            _delayIncome = businessData.DelayIncome;
+            _title.text = _localizationSystem.Get(options.BusinessData.Title);
+            _delayIncome = options.BusinessData.DelayIncome;
 
-            _management.Init(game, businessData, improvementFactory, id);
+            _management.Init(options);
 
-            _game.ViewUpdated.Subscribe(_ => OnViewUpdated()).AddTo(this);
+            _progress.value = _world.State.Progress.ContainsKey(_id) ? _world.State.Progress[_id] : _defaultProgress;
 
-            var levelUpdateFilterType = typeof(EcsFilter<LevelUpdate>);
-            _levelUpdateFilter = _game.World.GetFilter(levelUpdateFilterType) as EcsFilter<LevelUpdate>;
+            options.GameOptions.ViewUpdated.Subscribe(_ => OnViewUpdated()).AddTo(this);
 
-            var timerFilterType = typeof(EcsFilter<Timer>);
-            _timerFilter = _game.World.GetFilter(timerFilterType) as EcsFilter<Timer>;
-
-            _progress.value = _game.World.State.Progress.ContainsKey(_id) ? _game.World.State.Progress[_id] : _defaultProgress;
+            CreateFilters();
 
             CreateTimer();
         }
 
+        private void CreateFilters()
+        {
+            _levelUpdateFilter = _world.CreateFilter<EcsFilter<LevelUpdate>>();
+            _timerFilter = _world.CreateFilter<EcsFilter<Timer>>();
+        }
+
         private void CollectIncome()
         {
-            var incomeEntity = _game.World.NewEntity();
+            var incomeEntity = _world.NewEntity();
             ref var income = ref incomeEntity.Get<Income>();
             income.Value = _management.Income;
         }
@@ -97,10 +101,7 @@ namespace Clicker.Game
                     timer.Time = _delayIncome;
                 }
 
-                var progress = Mathf.Clamp01((_delayIncome - timer.Time) / _delayIncome);
-                _game.World.State.Progress[_id] = progress;
-
-                _progress.value = progress;
+                UpdateProgress(timer);
             }
         }
 
@@ -109,10 +110,18 @@ namespace Clicker.Game
             if (_management.Level <= _lockLevel)
                 return;
 
-            _timerEntity = _timerEntity.IsNull() ? _game.World.NewEntity() : _timerEntity;
+            _timerEntity = _timerEntity.IsNull() ? _world.NewEntity() : _timerEntity;
             ref var timer = ref _timerEntity.Get<Timer>();
             timer.Id = _id;
             timer.Time = _delayIncome * (1 - _progress.value);
+        }
+
+        private void UpdateProgress(Timer timer)
+        {
+            var progress = Mathf.Clamp01((_delayIncome - timer.Time) / _delayIncome);
+            _world.State.Progress[_id] = progress;
+
+            _progress.value = progress;
         }
     }
 }

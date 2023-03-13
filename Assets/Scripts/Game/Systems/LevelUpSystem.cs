@@ -1,16 +1,16 @@
-using Clicker.Core;
+using Clicker.Core.World;
 using Clicker.Game.Components;
 using Leopotam.Ecs;
 
 namespace Clicker.Game.Systems
 {
-    public class LevelUpSystem : IEcsRunSystem
+    public sealed class LevelUpSystem : IEcsRunSystem
     {
-        private readonly GameWorld _world;
+        private readonly IWorld _world;
 
         private readonly EcsFilter<LevelUp> _levelUpFilter;
 
-        public LevelUpSystem(GameWorld world)
+        public LevelUpSystem(IWorld world)
         {
             _world = world;
         }

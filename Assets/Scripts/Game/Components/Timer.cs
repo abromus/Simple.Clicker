@@ -2,7 +2,8 @@
 {
     public struct Timer
     {
-        public int Id;
-        public float Time;
+        public int Id { get; set; }
+
+        public float Time { get; set; }
     }
 }

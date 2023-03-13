@@ -1,17 +1,17 @@
-﻿namespace Clicker.Core
+﻿namespace Clicker.Core.Services
 {
-    public class GameLoopState : IEnterState
+    public sealed class GameLoopState : IEnterState
     {
-        private readonly GameManagement _game;
+        private readonly IScreenSystem _screenSystem;
 
-        public GameLoopState(GameManagement game)
+        public GameLoopState(IScreenSystem screenSystem)
         {
-            _game = game;
+            _screenSystem = screenSystem;
         }
 
         public void Enter()
         {
-            _game.World.ScreenSystem.ShowGame();
+            _screenSystem.ShowGame();
         }
 
         public void Exit() { }

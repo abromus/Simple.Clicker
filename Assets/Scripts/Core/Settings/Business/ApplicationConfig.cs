@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-namespace Clicker.Core
+namespace Clicker.Core.Settings
 {
     [CreateAssetMenu(fileName = "ApplicationConfig", menuName = "Settings/ApplicationConfig")]
-    public class ApplicationConfig : ScriptableObject
+    public sealed class ApplicationConfig : ScriptableObject
     {
         [SerializeField] private int _targetFrameRate;
 

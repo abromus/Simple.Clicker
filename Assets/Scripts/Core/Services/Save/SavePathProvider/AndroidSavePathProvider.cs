@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Clicker.Core.Saves
+namespace Clicker.Core.Services
 {
-    internal class AndroidSavePathProvider : SavePathProvider
+    public sealed class AndroidSavePathProvider : SavePathProvider
     {
         private const string AndroidFileName = "save";
         private const string AndroidBackupFileName = "save.backup";

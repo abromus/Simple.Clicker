@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Clicker.Core
+namespace Clicker.Core.Settings
 {
     [CreateAssetMenu(fileName = "BusinessConfig", menuName = "Settings/BusinessConfig")]
-    public class BusinessConfig : ScriptableObject
+    public sealed class BusinessConfig : ScriptableObject
     {
         [SerializeField] private List<BusinessData> _businessData;
 

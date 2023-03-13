@@ -1,6 +1,6 @@
 ﻿using Leopotam.Ecs;
 
-namespace Clicker.Core.Saves.Components
+namespace Clicker.Core.Components
 {
     public struct Save : IEcsIgnoreInFilter { }
 }

@@ -15,5 +15,7 @@ MonoBehaviour:
   _applicationConfig: {fileID: 11400000, guid: 308b364a5b7e47a48a46207c43649d5e, type: 2}
   _businessConfig: {fileID: 11400000, guid: 6d5df79a8d43fbc4d8362e4ca0444f4b, type: 2}
   _canvasConfig: {fileID: 11400000, guid: 33d6df15c05d02549a8de0a6861f54b2, type: 2}
-  _screenConfig: {fileID: 11400000, guid: 95fcd77a2d50a4042ba2b9ef456859e3, type: 2}
   _localizationConfig: {fileID: 11400000, guid: a32db30994fc2c045895bec2e7b50e34, type: 2}
+  _screenConfig: {fileID: 11400000, guid: 95fcd77a2d50a4042ba2b9ef456859e3, type: 2}
+  _uiFactoryConfig: {fileID: 11400000, guid: b010252034f9b4b43ab7a42d179a499e, type: 2}
+  _uiServiceConfig: {fileID: 11400000, guid: 588369f6d4e347043ae33b63f9e12571, type: 2}

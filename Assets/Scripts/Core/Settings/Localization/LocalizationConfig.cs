@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Clicker.Core
+namespace Clicker.Core.Settings
 {
     [CreateAssetMenu(fileName = "LocalizationConfig", menuName = "Settings/LocalizationConfig")]
-    public class LocalizationConfig : ScriptableObject
+    public sealed class LocalizationConfig : ScriptableObject
     {
         [SerializeField] private List<LocalizationData> _localizationData;
 

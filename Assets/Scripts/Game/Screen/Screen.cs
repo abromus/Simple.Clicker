@@ -1,12 +1,11 @@
-using Clicker.Core;
 using UnityEngine;
 
-namespace Clicker.Game
+namespace Clicker.Game.Screens
 {
-    public class Screen : MonoBehaviour, IScreen
+    public abstract class Screen : MonoBehaviour, IScreen
     {
-        public virtual ScreenType ScreenType { get; }
+        public abstract ScreenType ScreenType { get; }
 
-        public virtual void Init(GameManagement game) { }
+        public abstract void Init(BaseOptions options);
     }
 }

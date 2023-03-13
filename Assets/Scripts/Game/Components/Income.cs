@@ -2,6 +2,6 @@
 {
     public struct Income
     {
-        public float Value;
+        public float Value { get; set; }
     }
 }
