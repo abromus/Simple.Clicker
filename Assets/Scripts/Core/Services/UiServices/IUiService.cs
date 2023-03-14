@@ -1,6 +1,4 @@
-﻿using Clicker.Core.Factories;
-
-namespace Clicker.Core.Services
+﻿namespace Clicker.Core.Services
 {
     public interface IUiService
     {

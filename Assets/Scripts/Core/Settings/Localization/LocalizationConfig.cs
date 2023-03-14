@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Clicker.Core.Settings
 {
     [CreateAssetMenu(fileName = "LocalizationConfig", menuName = "Settings/LocalizationConfig")]
-    public sealed class LocalizationConfig : ScriptableObject
+    public sealed class LocalizationConfig : ScriptableObject, ILocalizationConfig
     {
         [SerializeField] private List<LocalizationData> _localizationData;
 

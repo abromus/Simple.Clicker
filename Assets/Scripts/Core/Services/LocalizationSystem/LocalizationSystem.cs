@@ -6,9 +6,9 @@ namespace Clicker.Core.Services
 {
     public sealed class LocalizationSystem : ILocalizationSystem, IService
     {
-        private readonly LocalizationConfig _config;
+        private readonly ILocalizationConfig _config;
 
-        public LocalizationSystem(LocalizationConfig localizationConfig)
+        public LocalizationSystem(ILocalizationConfig localizationConfig)
         {
             _config = localizationConfig;
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Clicker.Core.Settings;
 
 namespace Clicker.Core.Services
 {
@@ -18,7 +19,7 @@ namespace Clicker.Core.Services
                     game,
                     this,
                     screenSystem,
-                    game.ConfigData.CanvasConfig),
+                    game.ConfigStorage.GetUiConfig<ICanvasConfig>()),
                 [typeof(SceneLoaderState)] = new SceneLoaderState(sceneLoader),
                 [typeof(GameLoopState)] = new GameLoopState(screenSystem),
             };

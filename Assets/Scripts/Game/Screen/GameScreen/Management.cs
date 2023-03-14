@@ -45,7 +45,6 @@ namespace Clicker.Game.Screens
 
         private EcsFilter<ImprovementUpdate> _improvementUpdateFilter;
 
-
         public int Level => _level;
 
         public float Income => _income;

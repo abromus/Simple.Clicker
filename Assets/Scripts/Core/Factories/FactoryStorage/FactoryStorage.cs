@@ -12,7 +12,7 @@ namespace Clicker.Core.Factories
 
         public IReadOnlyList<IUiFactory> UiFactories => _uiFactories;
 
-        public FactoryStorage(UiFactoryConfig config)
+        public FactoryStorage(IUiFactoryConfig config)
         {
             _pathProviderFactory = new SavePathProviderFactory();
 

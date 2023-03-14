@@ -12,7 +12,7 @@ namespace Clicker.Game.Screens
     {
         public IWorld World { get; }
 
-        public ConfigData ConfigData { get; }
+        public IConfigStorage ConfigStorage { get; }
 
         public ILocalizationSystem LocalizationSystem { get; }
 
@@ -22,13 +22,13 @@ namespace Clicker.Game.Screens
 
         public GameScreenOptions(
             IWorld world,
-            ConfigData configData,
+            IConfigStorage configStorage,
             ILocalizationSystem localizationSystem,
             IObservable<Null> viewUpdated,
             IReadOnlyList<IUiFactory> uiFactories)
         {
             World = world;
-            ConfigData = configData;
+            ConfigStorage = configStorage;
             LocalizationSystem = localizationSystem;
             ViewUpdated = viewUpdated;
             UiFactories = uiFactories;

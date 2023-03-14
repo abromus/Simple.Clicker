@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Clicker.Core.Factories;
+using Clicker.Core.Settings;
 using Clicker.Game.Screens;
 using UnityEngine;
 
@@ -20,7 +21,7 @@ namespace Clicker.Core.Services
 
         public void ShowGame()
         {
-            var screenPrefab = _game.ConfigData.ScreenConfig.Screens
+            var screenPrefab = _game.ConfigStorage.GetUiConfig<IScreenConfig>().Screens
                 .FirstOrDefault(screen => screen.ScreenType == ScreenType.Game);
 
             if (screenPrefab == null)
@@ -30,7 +31,7 @@ namespace Clicker.Core.Services
 
             var options = new GameScreenOptions(
                 _game.World,
-                _game.ConfigData,
+                _game.ConfigStorage,
                 _game.ServiceStorage.GetService<ILocalizationSystem>(),
                 _game.ViewUpdated,
                 _game.ServiceStorage.GetService<IFactoryStorage>().UiFactories);

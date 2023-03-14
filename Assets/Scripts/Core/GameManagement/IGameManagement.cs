@@ -7,7 +7,7 @@ namespace Clicker.Core
 {
     public interface IGameManagement
     {
-        public ConfigData ConfigData { get; }
+        public IConfigStorage ConfigStorage { get; }
 
         public IServiceStorage ServiceStorage { get; }
 

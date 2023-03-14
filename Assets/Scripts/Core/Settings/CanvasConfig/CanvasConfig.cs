@@ -4,7 +4,7 @@ using UnityEngine.UI;
 namespace Clicker.Core.Settings
 {
     [CreateAssetMenu(fileName = "CanvasConfig", menuName = "Settings/CanvasConfig")]
-    public sealed class CanvasConfig : ScriptableObject
+    public sealed class CanvasConfig : ScriptableObject, ICanvasConfig
     {
         [SerializeField] private string _name;
         [SerializeField] private RenderMode _renderMode;

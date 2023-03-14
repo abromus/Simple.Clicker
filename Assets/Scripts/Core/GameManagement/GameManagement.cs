@@ -8,13 +8,13 @@ namespace Clicker.Core
 {
     public sealed class GameManagement : IGameManagement
     {
-        private readonly ConfigData _configData;
+        private readonly IConfigStorage _configStorage;
 
         private readonly IServiceStorage _serviceStorage;
         private readonly IEcsManagement _ecsManagement;
         private readonly ISubject<Null> _viewUpdated;
 
-        public ConfigData ConfigData => _configData;
+        public IConfigStorage ConfigStorage => _configStorage;
 
         public IServiceStorage ServiceStorage => _serviceStorage;
 
@@ -22,15 +22,15 @@ namespace Clicker.Core
 
         public IWorld World => _serviceStorage.GetService<IEcsManagement>().World;
 
-        public GameManagement(ConfigData configData)
+        public GameManagement(IConfigStorage configStorage)
         {
-            _configData = configData;
+            _configStorage = configStorage;
 
             var serviceOptions = new ServiceOptions(
                 this,
-                _configData.LocalizationConfig,
-                _configData.UiFactoryConfig,
-                _configData.UiServiceConfig);
+                _configStorage.GetUiConfig<ILocalizationConfig>(),
+                _configStorage.GetUiConfig<IUiFactoryConfig>(),
+                _configStorage.GetUiConfig<IUiServiceConfig>());
 
             _serviceStorage = new ServiceStorage(serviceOptions);
 

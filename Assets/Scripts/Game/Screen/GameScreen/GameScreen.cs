@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Clicker.Core;
 using Clicker.Core.Factories;
+using Clicker.Core.Settings;
 using Clicker.Game.Components;
 using Leopotam.Ecs;
 using TMPro;
@@ -49,7 +50,7 @@ namespace Clicker.Game.Screens
 
         private void CreateBusiness()
         {
-            var businessConfig = _options.ConfigData.BusinessConfig.BusinessData;
+            var businessConfig = _options.ConfigStorage.GetUiConfig<IBusinessConfig>().BusinessData;
             var businessId = 0;
 
             foreach (var businessData in businessConfig)

@@ -9,10 +9,10 @@ namespace Clicker.Core.Services
     {
         private readonly Dictionary<Type, IService> _services;
 
-        public ServiceStorage(ServiceOptions options)
+        public ServiceStorage(IServiceOptions options)
         {
             var screenSystem = options.UiServiceConfig.UiServices
-                    .FirstOrDefault(service => service.UiServiceType == UiServiceType.ScreenSystem) as IScreenSystem;
+                .FirstOrDefault(service => service.UiServiceType == UiServiceType.ScreenSystem) as IScreenSystem;
 
             var factoryStorage = new FactoryStorage(options.UiFactoryConfig);
             var saveManager = new SaveManager(factoryStorage.SavePathProviderFactory);

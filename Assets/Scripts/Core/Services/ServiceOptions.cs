@@ -2,23 +2,23 @@
 
 namespace Clicker.Core.Services
 {
-    public sealed class ServiceOptions
+    public sealed class ServiceOptions : IServiceOptions
     {
         public IGameManagement GameManagement { get; }
 
         public IScreenSystem ScreenSystem { get; }
 
-        public LocalizationConfig LocalizationConfig { get; }
+        public ILocalizationConfig LocalizationConfig { get; }
 
-        public UiFactoryConfig UiFactoryConfig { get; }
+        public IUiFactoryConfig UiFactoryConfig { get; }
 
-        public UiServiceConfig UiServiceConfig { get; }
+        public IUiServiceConfig UiServiceConfig { get; }
 
         public ServiceOptions(
-            GameManagement gameManagement,
-            LocalizationConfig localizationConfig,
-            UiFactoryConfig uiFactoryConfig,
-            UiServiceConfig uiServiceConfig)
+            IGameManagement gameManagement,
+            ILocalizationConfig localizationConfig,
+            IUiFactoryConfig uiFactoryConfig,
+            IUiServiceConfig uiServiceConfig)
         {
             GameManagement = gameManagement;
             LocalizationConfig = localizationConfig;

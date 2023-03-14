@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1faa311837a4ba14f9c468309a67d377, type: 3}
-  m_Name: ConfigData
+  m_Script: {fileID: 11500000, guid: 0b965cc1da3ac6146a165e819a3f549d, type: 3}
+  m_Name: ConfigStorage
   m_EditorClassIdentifier: 
   _applicationConfig: {fileID: 11400000, guid: 308b364a5b7e47a48a46207c43649d5e, type: 2}
   _businessConfig: {fileID: 11400000, guid: 6d5df79a8d43fbc4d8362e4ca0444f4b, type: 2}

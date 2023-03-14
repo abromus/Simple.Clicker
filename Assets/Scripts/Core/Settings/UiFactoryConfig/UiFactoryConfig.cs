@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Clicker.Core.Settings
 {
     [CreateAssetMenu(fileName = "UiFactoryConfig", menuName = "Settings/UiFactoryConfig")]
-    public sealed class UiFactoryConfig : ScriptableObject
+    public sealed class UiFactoryConfig : ScriptableObject, IUiFactoryConfig
     {
         [SerializeField] private List<UiFactory> _uiFactories;
 

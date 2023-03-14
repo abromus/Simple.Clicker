@@ -9,9 +9,9 @@ namespace Clicker.Core.Services
         private readonly IGameManagement _game;
         private readonly IStateMachine _stateMachine;
         private readonly IScreenSystem _screenSystem;
-        private readonly CanvasConfig _canvasConfig;
+        private readonly ICanvasConfig _canvasConfig;
 
-        public GameState(IGameManagement game, IStateMachine stateMachine, IScreenSystem screenSystem, CanvasConfig canvasConfig)
+        public GameState(IGameManagement game, IStateMachine stateMachine, IScreenSystem screenSystem, ICanvasConfig canvasConfig)
         {
             _game = game;
             _stateMachine = stateMachine;
