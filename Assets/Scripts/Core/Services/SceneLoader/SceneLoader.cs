@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 namespace Clicker.Core.Services
 {
-    public sealed class SceneLoader: ISceneLoader, IService
+    public sealed class SceneLoader : ISceneLoader, IService
     {
         public void Load(string name, Action success)
         {
